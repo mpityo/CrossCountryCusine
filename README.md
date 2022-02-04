@@ -74,16 +74,24 @@ Have a quality README (with unique name, description, technologies used, screens
 5. 
 
 ## Credits
- 
+
+* Team members:
+
 Aaron
+
 Alex
+
 Dalien
+
 Matt
+
 Vulong
  
-* Used info from:
+* Tools:
  
- 
+https://lucid.app/documents#/dashboard
+
+
  
 ## License
 
