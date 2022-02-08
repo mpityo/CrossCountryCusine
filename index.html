@@ -14,10 +14,12 @@
 </head>
 <body>
     <div>
+        <!-- SEARCH FORM -->
         <form action="" id="form">
+            <!-- city input -->
             <label for="city-search">Enter a city name:</label>
             <input type="text" name ="city-search" id="city-search" placeholder="City Name">
-
+            <!-- dollar input -->
             <p>Specify a dollar amount to show:</p>
             <input type="checkbox" name="one-dollar" id="1-dollar">
             <label for="one-dollar"><heavy>$</heavy></label>
@@ -27,13 +29,13 @@
             <label for="three-dollar"><heavy>$$$</heavy></label>
             <input type="checkbox" name="four-dollar" id="4-dollar">
             <label for="four-dollar"><heavy>$$$$</heavy></label>
-
-            <label for="cuisine-types" style="display: block; line-height: 4;">Specify food you'd like to search for:</label>
+            <!-- food type filter -->
+            <label for="cuisine-types" style="display: block; margin-top: 1rem;">Specify food you'd like to search for:</label>
             <input list="cuisine-types" id="food-input" oninput="selectFood()">
             <datalist id="cuisine-types"></datalist>
             <div id="food-added"></div>
 
-            <button id="submit-form" style="margin-top: 50px;">Submit</button>
+            <button id="submit-form" style="margin-top: 20px;">Submit</button>
         </form>
     </div>
     <script src="./assets/js/foodFilterHandler.js"></script>

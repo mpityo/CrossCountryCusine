@@ -14,6 +14,9 @@ var buttonHandler = function (e) {
 }
 
 var getSearchStatus = function () {
+    if (foodOptionsSelected.length === 0) {
+        foodOptionsSelected = listOfFoodOptions;
+    }
     var searchConditions = {
         city: document.querySelector("#city-search").value,
         dollarAmount: {

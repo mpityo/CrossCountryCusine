@@ -1,6 +1,6 @@
 var foodAddedEl = document.querySelector("#food-added");
-var foodOptionsSelected = [];
 var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Mediteranian', 'Asian', 'German', 'Comfort'];
+var foodOptionsSelected = [];
 
 var deleteFoodType = function (typeToRemove) {  
     // add food name back to food selection list

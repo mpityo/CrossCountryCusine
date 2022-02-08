@@ -64,13 +64,18 @@ a {
     margin: 0.5rem;
 }
 
+/* 
+ * food filter buttons for user 
+ * added to show a mock up
+ * DELETE and add bulma classes instead
+ */
 .food-added-container {
     margin-top: 20px;
 }
 .food-added-span {
-    border: 2px rgb(98, 148, 223) solid;
+    border: 1px black solid;
     border-radius: 10px;
-    background-color: rgba(135, 206, 250, 0.5);
+    background-color: rgba(98, 102, 104, 0.2);
     padding: 2px 5px;
 }
 .food-added-button {
