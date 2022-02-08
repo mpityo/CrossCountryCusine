@@ -41,5 +41,5 @@ foodAddedEl.addEventListener("click", function(e) {
 // populate the list of food that can be filtered by user
 // contained in foodFilterHandler.js
 listOfFoodOptions.forEach(element => {
-    createFoodTypeEl(element);
+    createFoodTypeOptions(element);
 });

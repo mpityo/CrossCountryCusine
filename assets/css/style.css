@@ -63,3 +63,18 @@ a {
 .content figure {
     margin: 0.5rem;
 }
+
+.food-added-container {
+    margin-top: 20px;
+}
+.food-added-span {
+    border: 2px rgb(98, 148, 223) solid;
+    border-radius: 10px;
+    background-color: rgba(135, 206, 250, 0.5);
+    padding: 2px 5px;
+}
+.food-added-button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor: pointer;
+}

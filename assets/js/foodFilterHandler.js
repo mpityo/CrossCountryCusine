@@ -1,11 +1,11 @@
 var foodAddedEl = document.querySelector("#food-added");
 var foodOptionsSelected = [];
-var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Artistic', 'Mexican'];
+var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Mediteranian', 'Asian', 'German', 'Comfort'];
 
 var deleteFoodType = function (typeToRemove) {  
     // add food name back to food selection list
     var foodName = typeToRemove.target.parentElement.firstChild.data;
-    createFoodTypeEl(foodName);
+    createFoodTypeOptions(foodName);
 
     // remove food from the list of food that has already been selected
     typeToRemove.target.closest("span").remove();
@@ -19,7 +19,7 @@ var deleteFoodType = function (typeToRemove) {
     }
 }
 
-var createFoodTypeEl = function (foodName) {
+var createFoodTypeOptions = function (foodName) {
     // create the food cusine type drop down for user to select
     // get the element to add the options to
     var dataListEl = formEl.querySelector("datalist");
@@ -37,10 +37,13 @@ var createFoodUserButtons = function (foodName) {
     // add food type to page for easy removal by user
     // hold name and delete button in one div
     var foodAddedContainer = document.createElement("div");
+    foodAddedContainer.classList = "food-added-container";
 
     var foodToAddEl = document.createElement("span");
     foodToAddEl.textContent = foodName;
+    foodToAddEl.classList = "food-added-span";
     var deleteBtn = document.createElement("button");
+    deleteBtn.classList = "food-added-button";
     deleteBtn.textContent = "X";
     deleteBtn.name = "delete-food-type";
 
@@ -49,10 +52,10 @@ var createFoodUserButtons = function (foodName) {
     foodAddedEl.appendChild(foodAddedContainer);
 
     // remove the food from the list, so it cannot be selected again
-    document.querySelector("#" + foodName).remove();
+    document.getElementById(foodName).remove();
 
-    // return the form back to default
-    document.querySelector("#food-input").textContent = "";
+    // return the form back to blank for next input
+    document.getElementById("food-input").value = "";
 }
 
 function selectFood () {
