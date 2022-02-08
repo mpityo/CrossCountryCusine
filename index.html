@@ -15,7 +15,7 @@
 <body>
     <div>
         <form action="" id="form">
-            <label for="city-search">Enter a city name</label>
+            <label for="city-search">Enter a city name:</label>
             <input type="text" name ="city-search" id="city-search" placeholder="City Name">
 
             <p>Specify a dollar amount to show:</p>
@@ -30,14 +30,13 @@
 
             <label for="cuisine-types" style="display: block; line-height: 4;">Specify food you'd like to search for:</label>
             <input list="cuisine-types" id="food-input" oninput="selectFood()">
-            <datalist id="cuisine-types">
-                <!-- <option id="thai" value="&#10004; Thai"></option> -->
-            </datalist>
+            <datalist id="cuisine-types"></datalist>
             <div id="food-added"></div>
 
-            <button>Submit</button>
+            <button id="submit-form" style="margin-top: 50px;">Submit</button>
         </form>
     </div>
+    <script src="./assets/js/foodFilterHandler.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
