@@ -1,38 +1,38 @@
 /* Custom Styling */
 
 /* Restaurant results will wrap on multiple lines if needed */
-#restaurant-content {
+/* #restaurant-content {
     flex-wrap: wrap;
 }
 
 /* When a user hovers on a restaurant tile, saved restaurant, or a menu item, the cursor will change 
 to a pointer to indicate that it can be clicked */
-.restaurant-tile:hover, .resturant-menu-item:hover, #saved-restaurant-list:hover {
+/* .restaurant-tile:hover, .resturant-menu-item:hover, #saved-restaurant-list:hover {
     cursor: pointer;
 
-}
+} */
 
 /* Link style */
-a {
+/* a {
     text-decoration: underline dotted;
     color: black;
     padding-left: 0.25rem;
-}
+} */
 
 /* Images in saved restaurant list */
-#saved-recipe-list img {
+/* #saved-recipe-list img {
     width: 25%;
-}
+} */
 
 /* Link style */
-a {
+/* a {
     text-decoration: underline dotted;
     color: black;
     padding-left: 0.25rem;
-}
+} */
 
 /* saved restaurant list */
-#saved-restaurant-list ul {
+/* #saved-restaurant-list ul {
     display: inline-flex;
     flex-direction: column;
 }
@@ -46,20 +46,73 @@ a {
     width: 100%;
     vertical-align: middle;
     padding: 0.25rem;
-}
+} */
 
 /* Modal titles and text will wrap if needed */
-.modal p {
+/* .modal p {
     flex-wrap: wrap;
     flex-shrink: 1;
-}
+} */
 
 
 /* Footer Styling */
-.footer {
+/* .footer {
     padding: 0.5rem;
 }
 
 .content figure {
     margin: 0.5rem;
+} */ */
+
+
+/* Top Image Styling */
+/* .image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+} */
+ 
+.center, .center-cilumn, .top, .right, .bottom, .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-column {
+    flex-direction: column;
+}
+
+.top    {align-items: flex-start; }
+.right  {justify-content: flex-end; }
+.bottom {align-items: flex-end; }
+.left   {justify-content: flex-start; }
+
+.single-spaced, .single-spaced * {
+    line-height: 1;
+}
+
+@media (max-width: 1024px) {
+    .desktop {
+        display: none;
+    }
+}
+
+#a { grid-area: a; }
+#b { grid-area: b; }
+#c { grid-area: c; }
+
+#grid { 
+    display: grid;
+    grid-template-areas: 
+        "a a"
+        "b c";
+}
+
+@media (max-width: 512px) {
+    #grid {
+        grid-template-areas: 
+        "a a"
+        "b c";
+    }
 }

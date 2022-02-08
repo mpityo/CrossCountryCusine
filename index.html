@@ -7,10 +7,16 @@
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
     <!-- <link rel="stylesheet" href="styles/debug.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
 
+.hero {
+    background: black url(images/CIbi-del-mondo-2.jpg) center / cover;
+}
+
+@media (max-width: 1024px) {.hero { background: black url(images/CIbi-del-mondo-2.jpg) center / cover; } }
+@media (max-width: 726px) {.hero { background: black url(images/CIbi-del-mondo-2.jpg) center / cover; } }
 
     </style>
 
@@ -19,44 +25,64 @@
 <body>
 
     <!-- .hero -->
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container">
-                <figure class="image center">
-                    <img src="images/Soup-Globe.jpg.crdownload" style="max-width: 300px; max-height: 200 px;">
-                </figure>
+    <section class="hero is-full-height">
+
+        <!-- .hero-head -->
+        <div class="hero-head">
+            <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+
+                <div class="column left">
+                    <p class="navbar-item has-text-white">SEARCH</p>
+                </div>
+
+                <div class="column center desktop">
+                    <p class="navbar-item has-text-white">MENU</p>
+                    <p class="navbar-item has-text-black">LOCATION</p>
+                    <p class="navbar-item has-text-white">RATINGS</p>
+                </div>
+
+                <div class="column right">
+                    <p class="navbar-item has-text-white desktop">SIGNUP</p>
+                </div>
+
+            </div> 
+        </div>
+    <!-- /.hero-head -->
+
+    <!-- .hero-body -->
+    <header class="hero-body">
+        <div class="is-overlay has-text-centered single-spaced" style="top: 92px;">
+        <h1 class="subtitle is-4 has-text-weight-light has-text-white"> Welcome to </h1>
+        <h2 class="title is-1 has-text-black"> Eat Around The World</h2>
+        </div>
+    </header>
+    <!-- /.hero-body -->
+
+    <!-- .hero-foot -->
+    <main class="hero-foot center" style="padding: 2rem;">
+        <div id="grid" style="width: 768px;">
+            <div id="a" class="center-column">            
+                <p class="has-text-centered has-text-black">
+                    Worldwide
+                </p>
+            </div>
+            <div id="b" class="center-column">                
+                <p class="has-text-centered has-text-black">
+                    Great Directions
+                </p>
+            </div>
+            <div id="c" class="center-column" style="border-left: 1px solid gray;">                
+                <p class="has-text-centered has-text-black">
+                    Best Menus 
+                </p>
             </div>
         </div>
-    </section>
-    <!-- /.hero -->
+    </main>
+    <!-- /.hero-foot -->
 
-    <!-- .section -->
-    <section class="section">
-        <div class="container">
-            <div class="column">
-                <article class="media notification is-info">
-                    <figure class="media-left">
-                        <span class="icon is-large">
-                            <i class="fab fa-2x fa-css3-alt"></i>
-                        </span>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
+</section>
+<!-- /.hero -->
 
-                            <!-- h1 to be determined-->
-                            <h1 class="title is-size-4">To be determined</h1>
-                            <p class="is-size-5">
-                                A short descriptiong about the webpage.
-                                <span class="emoticon">(b . _  .)b</span>
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            </div>
-    </section>
-    <!-- /.section -->
-
-</body>
+    </body>
 
 </html>
