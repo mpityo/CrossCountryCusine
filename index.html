@@ -17,9 +17,25 @@
         <form action="" id="form">
             <label for="city-search">Enter a city name</label>
             <input type="text" name ="city-search" id="city-search" placeholder="City Name">
-            <input type="checkbox" name="food" id="">
-            <label for="food">Pizza</label>
-            <button>Click me!</button>
+
+            <p>Specify a dollar amount to show:</p>
+            <input type="checkbox" name="one-dollar" id="1-dollar">
+            <label for="one-dollar"><heavy>$</heavy></label>
+            <input type="checkbox" name="two-dollar" id="2-dollar">
+            <label for="two-dollar"><heavy>$$</heavy></label>
+            <input type="checkbox" name="three-dollar" id="3-dollar">
+            <label for="three-dollar"><heavy>$$$</heavy></label>
+            <input type="checkbox" name="four-dollar" id="4-dollar">
+            <label for="four-dollar"><heavy>$$$$</heavy></label>
+
+            <label for="cuisine-types" style="display: block; line-height: 4;">Specify food you'd like to search for:</label>
+            <input list="cuisine-types" id="food-input" oninput="selectFood()">
+            <datalist id="cuisine-types">
+                <!-- <option id="thai" value="&#10004; Thai"></option> -->
+            </datalist>
+            <div id="food-added"></div>
+
+            <button>Submit</button>
         </form>
     </div>
     <script src="./assets/js/script.js"></script>
