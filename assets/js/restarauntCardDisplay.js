@@ -30,7 +30,7 @@ var createSearchResultsEl = function () {
     var resultsAreaEl = document.getElementById('search-results');
     // main card
     var restarauntCard = document.createElement("div");
-    restarauntCard.classList = "card";
+    restarauntCard.classList = "card column is-5-tablet is-3-desktop is-3-widescreen is-2-fullhd";
 
     // card image at the top
     var restarauntImage = document.createElement("div");

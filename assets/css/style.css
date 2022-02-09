@@ -77,17 +77,18 @@ to a pointer to indicate that it can be clicked */
     cursor: pointer;
 }
 
+.card {
+    margin-top: 10px;
+}
+
 .card-footer {
     justify-content: space-around;
     align-items: center;
 }
 
 #search-results {
-    margin: 50px;
-}
-
-.card {
-    margin: 15px 0;
+    margin: 15px;
+    justify-content: space-evenly;
 }
  
 .center, .center-cilumn, .top, .right, .bottom, .left {
