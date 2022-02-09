@@ -107,7 +107,9 @@
           >Specify food you'd like to search for:</label>
         <input list="cuisine-types" id="food-input" oninput="selectFood()" />
         <datalist id="cuisine-types"></datalist>
-        <div class="is-flex" id="food-added"></div>
+        <div id="food-added">
+          <div class="is-flex" id="food-added-container"></div>
+        </div>
 
         <button id="submit-form" style="margin-top: 20px">Submit</button>
       </form>
