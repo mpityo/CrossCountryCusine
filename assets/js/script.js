@@ -4,6 +4,7 @@ var buttonHandler = function (e) {
     // form submit button is pressed
     if (e.target.id === "submit-form") {
         var foodToFind = getSearchStatus();
+        createSearchResultsEl();
         console.log(foodToFind);
     } else
     // delete food type that was selected from appearing in results
@@ -11,6 +12,46 @@ var buttonHandler = function (e) {
         // contained in foodFilterHandler.js
         deleteFoodType(e);
     }
+}
+
+var createSearchResultsEl = function () {
+    var resultsAreaEl = document.getElementById('search-results');
+    
+    var restarauntCard = document.createElement("div");
+    restarauntCard.classList = "card";
+
+    var restarauntImage = document.createElement("div");
+    restarauntImage.classList = "card-image";
+    var imgFigure = document.createElement("figure");
+    imgFigure.classList = "image";
+    var imageSrc = document.createElement("img");
+    imageSrc.setAttribute('src', './././images/food-guidelines-1.jpg');
+    imgFigure.appendChild(imageSrc);
+    restarauntImage.appendChild(imgFigure);
+
+    var restarauntContent = document.createElement("div");
+    restarauntContent.classList = "card-content";
+
+    var media = document.createElement("div");
+    media.classList = "media";
+    var mediaContent = document.createElement("div");
+    mediaContent.classList = "media-content";
+    var mediaContentTitle = document.createElement("p");
+    mediaContentTitle.classList = "title is-10"
+    mediaContentTitle.textContent = "Restaraunt Name";
+    mediaContent.appendChild(mediaContentTitle);
+    media.appendChild(mediaContent);
+    restarauntContent.appendChild(media);
+    
+    var cardContent = document.createElement("div");
+    cardContent.className = "content";
+    cardContent.textContent = "Here's information about the restaraunt";
+    restarauntContent.appendChild(cardContent);
+
+    restarauntCard.appendChild(restarauntImage);
+    restarauntCard.appendChild(restarauntContent);
+    resultsAreaEl.appendChild(restarauntCard);
+
 }
 
 var getSearchStatus = function () {

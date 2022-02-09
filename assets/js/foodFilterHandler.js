@@ -41,10 +41,8 @@ var createFoodUserButtons = function (foodName) {
 
     var foodToAddEl = document.createElement("span");
     foodToAddEl.textContent = foodName;
-    foodToAddEl.classList = "food-added-span";
     var deleteBtn = document.createElement("button");
-    deleteBtn.classList = "food-added-button";
-    deleteBtn.textContent = "X";
+    deleteBtn.classList = "delete";
     deleteBtn.name = "delete-food-type";
 
     foodToAddEl.appendChild(deleteBtn);
