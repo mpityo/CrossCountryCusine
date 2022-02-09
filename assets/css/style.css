@@ -73,6 +73,10 @@ to a pointer to indicate that it can be clicked */
     width: 50%;
 } */
 
+.favorite-button:hover {
+    cursor: pointer;
+}
+
 #search-results {
     margin: 50px;
 }
