@@ -8,9 +8,9 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <!-- <link rel="stylesheet" href="styles/debug.css"> -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <style>
-
+        
 .hero {
     background: black url(images/CIbi-del-mondo-2.jpg) center / cover;
 }
@@ -51,15 +51,15 @@
 
     <!-- .hero-body -->
     <header class="hero-body">
-        <div class="is-overlay has-text-centered single-spaced" style="top: 92px;">
+        <!-- <div class="is-overlay has-text-centered single-spaced" style="top: 92px;"> -->
         <h1 class="subtitle is-4 has-text-weight-light has-text-white"> Welcome to </h1>
         <h2 class="title is-1 has-text-black"> Eat Around The World</h2>
-        </div>
+        <!-- </div> -->
     </header>
     <!-- /.hero-body -->
 
     <!-- .hero-foot -->
-    <main class="hero-foot center" style="padding: 2rem;">
+    <div class="hero-foot center" style="padding: 2rem;">
         <div id="grid" style="width: 768px;">
             <div id="a" class="center-column">            
                 <p class="has-text-centered has-text-black">
@@ -77,12 +77,41 @@
                 </p>
             </div>
         </div>
-    </main>
+    </div>
     <!-- /.hero-foot -->
 
-</section>
+    </section>
 <!-- /.hero -->
 
-    </body>
+<div>
+    <!-- SEARCH FORM -->
+    <form action="" id="form">
+        <!-- city input -->
+        <label for="city-search">Enter a city name:</label>
+        <input type="text" name ="city-search" id="city-search" placeholder="City Name">
+        <!-- dollar input -->
+        <p>Specify a dollar amount to show:</p>
+        <input type="checkbox" name="one-dollar" id="1-dollar">
+        <label for="one-dollar"><heavy>$</heavy></label>
+        <input type="checkbox" name="two-dollar" id="2-dollar">
+        <label for="two-dollar"><heavy>$$</heavy></label>
+        <input type="checkbox" name="three-dollar" id="3-dollar">
+        <label for="three-dollar"><heavy>$$$</heavy></label>
+        <input type="checkbox" name="four-dollar" id="4-dollar">
+        <label for="four-dollar"><heavy>$$$$</heavy></label>
+        <!-- food type filter -->
+        <label for="cuisine-types" style="display: block; margin-top: 1rem;">Specify food you'd like to search for:</label>
+        <input list="cuisine-types" id="food-input" oninput="selectFood()">
+        <datalist id="cuisine-types"></datalist>
+        <div id="food-added"></div>
+
+        <button id="submit-form" style="margin-top: 20px;">Submit</button>
+    </form>
+</div>
+
+
+<script src="./assets/js/foodFilterHandler.js"></script>
+<script src="./assets/js/script.js"></script>
+</body>
 
 </html>

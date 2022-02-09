@@ -79,6 +79,26 @@ to a pointer to indicate that it can be clicked */
     align-items: center;
 }
 
+/* 
+ * food filter buttons for user 
+ * added to show a mock up
+ * DELETE and add bulma classes instead
+ */
+.food-added-container {
+    margin-top: 20px;
+}
+.food-added-span {
+    border: 1px black solid;
+    border-radius: 10px;
+    background-color: rgba(98, 102, 104, 0.2);
+    padding: 2px 5px;
+}
+.food-added-button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor: pointer;
+}
+
 .center-column {
     flex-direction: column;
 }
