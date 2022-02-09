@@ -26,8 +26,8 @@ var favoriteRestarauntHandler = function () {
     }
 };
 
-var createSearchResultsEl = function () {
-    var resultsAreaEl = document.getElementById('search-results');
+var createSearchResultElement = function (infoToAdd) {
+    var resultsAreaEl = document.getElementById('search-results-container');
     // main card
     var restarauntCard = document.createElement("div");
     restarauntCard.classList = "card column is-5-tablet is-4-desktop is-3-widescreen is-one-fifth-fullhd";
@@ -96,12 +96,12 @@ var createSearchResultsEl = function () {
             reviewContainer.appendChild(star);
         }
     }
-    var hoursOfOperation = document.createElement("div");
-        hoursOfOperation.textContent = "Hours: 12PM - 10PM M-F";
+    var priceRange = document.createElement("div");
+        priceRange.textContent = "Price range: $$$";
     var cuisineType = document.createElement("div");
-        cuisineType.textContent = "Cuisine type: American, comfort";
+        cuisineType.textContent = "Cuisine type: " + infoToAdd.typeOfFood.join(', ');
     cardContent.appendChild(reviewContainer);
-    cardContent.appendChild(hoursOfOperation);
+    cardContent.appendChild(priceRange);
     cardContent.appendChild(cuisineType);
     restarauntContent.appendChild(cardContent);
 
@@ -126,4 +126,18 @@ var createSearchResultsEl = function () {
     restarauntCard.appendChild(footer);
     resultsAreaEl.appendChild(restarauntCard);
 
+}
+
+var createSearchResults = function (restarauntToAdd) {
+    // if there is already search results, remove them
+    if (document.getElementById('search-results-container')) {
+        document.getElementById('search-results-container').remove();
+    }
+    // create new container to house new search results
+    var searchResultsContainer = document.createElement("div");
+    searchResultsContainer.id = "search-results-container";
+    searchResultsContainer.classList = "columns is-multiline";
+    document.getElementById("search-results").appendChild(searchResultsContainer);
+    // create the results
+    createSearchResultElement(restarauntToAdd);
 }

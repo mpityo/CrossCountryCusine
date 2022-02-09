@@ -5,8 +5,8 @@ var buttonHandler = function (e) {
     if (e.target.id === "submit-form") {
         var foodToFind = getSearchStatus();
         console.log(foodToFind);
-        createSearchResultsEl();
         resetSearchResults();
+        createSearchResults(foodToFind);
     } else
     // delete food type that was selected from appearing in results
     if (e.target.name === "delete-food-type") {

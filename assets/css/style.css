@@ -86,7 +86,7 @@ to a pointer to indicate that it can be clicked */
     align-items: center;
 }
 
-#search-results {
+#search-results-container {
     margin: 15px;
     justify-content: space-evenly;
 }
