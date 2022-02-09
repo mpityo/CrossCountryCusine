@@ -42,6 +42,8 @@ foodAddedEl.addEventListener("click", function(e) {
     buttonHandler(e);
 });
 
+// ** icon clicking for addind restarunt to favorite is handled in restarauntCardDisplay.js ** //
+
 // populate the list of food that can be filtered by user
 // contained in foodFilterHandler.js
 listOfFoodOptions.forEach(element => {
