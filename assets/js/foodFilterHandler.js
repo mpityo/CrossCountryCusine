@@ -1,5 +1,4 @@
-var foodAddedEl = document.querySelector("#food-added");
-var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Mediteranian', 'Asian', 'German', 'Comfort'];
+var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Mediteranian', 'Asian', 'German', 'British', 'Scottish', 'Indian', 'Chinese', 'Spanish', 'Swedish', 'Cuban', 'Columbian', 'Brazilian', 'Japanese', 'Jewish', 'Russian', 'Polish', 'Canadian', 'Peruvian', 'Irish', 'Greek', 'Egyptian', 'Haitian', 'Canadian', 'Cajun', 'Korean', 'Nigerian', 'Libyan', 'Algerian'];
 var foodOptionsSelected = [];
 
 var deleteFoodType = function (typeToRemove) {  
@@ -36,11 +35,14 @@ var createFoodTypeOptions = function (foodName) {
 var createFoodUserButtons = function (foodName) {
     // add food type to page for easy removal by user
     // hold name and delete button in one div
+    var foodAddedEl = document.querySelector("#food-added-container");
+    
     var foodAddedContainer = document.createElement("div");
-    foodAddedContainer.classList = "food-added-container";
+    foodAddedContainer.classList = "individual-food-container";
 
     var foodToAddEl = document.createElement("span");
     foodToAddEl.textContent = foodName;
+    foodToAddEl.id = foodName;
     var deleteBtn = document.createElement("button");
     deleteBtn.classList = "delete";
     deleteBtn.name = "delete-food-type";
