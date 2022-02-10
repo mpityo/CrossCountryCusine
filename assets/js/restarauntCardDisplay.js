@@ -1,4 +1,6 @@
-var favoriteRestarauntHandler = function () {  
+var restarauntData = [];
+
+var favoriteRestarauntHandler = function (city) {  
     var restaraunt = event.target;
     if (event.type === "mouseenter") {
         if (restaraunt.classList.contains("fa-regular")) {
@@ -21,12 +23,13 @@ var favoriteRestarauntHandler = function () {
             // removeFromSaved(restaraunt);
         } else {
             restaraunt.setAttribute('favorite', true);
-            // saveToFavorites(restaraunt);
+            console.log(restaraunt.getAttribute('city'), restarauntData[restaraunt.getAttribute('index')]);
+            saveToFavorites(restaraunt.getAttribute('city'), restarauntData[restaraunt.getAttribute('index')]);
         }
     }
 };
 
-var createSearchResultElement = function (infoToAdd) {
+var createSearchResultElement = function (infoToAdd, index) {
     var resultsAreaEl = document.getElementById('search-results-container');
     // main card
     var restarauntCard = document.createElement("div");
@@ -58,6 +61,9 @@ var createSearchResultElement = function (infoToAdd) {
         favoriteRestaraunt.setAttribute('onmouseleave', 'favoriteRestarauntHandler()');
         favoriteRestaraunt.setAttribute('onclick', 'favoriteRestarauntHandler()');
         favoriteRestaraunt.setAttribute('favorite', false);
+        favoriteRestaraunt.setAttribute('city', JSON.stringify(infoToAdd.address.city));
+        favoriteRestaraunt.setAttribute('info', JSON.stringify(infoToAdd));
+        favoriteRestaraunt.setAttribute('index', JSON.stringify(index))
         // restaraunt name in center
     var mediaContent = document.createElement("div");
         mediaContent.classList = "media-content icon is-medium";
@@ -145,9 +151,10 @@ var createSearchResults = function (restarauntToAdd) {
     searchResultsContainer.id = "search-results-container";
     searchResultsContainer.classList = "columns is-multiline";
     document.getElementById("search-results").appendChild(searchResultsContainer);
+    restarauntData = restarauntToAdd;
     // create the results
     restarauntToAdd.forEach (function(element, index) {
         //console.log(restarauntToAdd[index]);
-        createSearchResultElement(restarauntToAdd[index]);
+        createSearchResultElement(restarauntToAdd[index], index);
     });
 }
