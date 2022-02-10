@@ -63,7 +63,7 @@ var createSearchResultElement = function (infoToAdd) {
         mediaContent.classList = "media-content icon is-medium";
     var mediaContentTitle = document.createElement("p");
         mediaContentTitle.classList = "title is-10"
-        mediaContentTitle.textContent = "Restaraunt Name";
+        mediaContentTitle.textContent = infoToAdd.restaurant_name;
     favoriteRestarauntContainer.appendChild(favoriteRestaraunt);
     mediaContent.appendChild(mediaContentTitle);
     media.appendChild(favoriteRestarauntContainer);
@@ -73,10 +73,10 @@ var createSearchResultElement = function (infoToAdd) {
     // main card content under header
     var cardContent = document.createElement("div");
         cardContent.className = "content";
-        cardContent.textContent = "Here's information about the restaraunt";
+        // cardContent.textContent = "";
         // create review stars
     var reviewContainer = document.createElement("div");
-        reviewContainer.textContent = "Out of 146 reviews: ";
+        reviewContainer.textContent = "Reviews: ";
     var stars = 4;
     var halfStar = (stars % 1 !== 0) ? true : false;
     if (halfStar) stars -= stars%1;
@@ -98,12 +98,15 @@ var createSearchResultElement = function (infoToAdd) {
             reviewContainer.appendChild(star);
         }
     }
+	var hoursOfOperation = document.createElement("div");
+		hoursOfOperation.textContent = "Hours of Operation: " + infoToAdd.hours;
     var priceRange = document.createElement("div");
-        priceRange.textContent = "Price range: $$$";
+        priceRange.textContent = "Price range: " + infoToAdd.price_range;
     var cuisineType = document.createElement("div");
-        cuisineType.textContent = "Cuisine type: " + infoToAdd.typeOfFood.join(', ');
+        cuisineType.textContent = "Cuisine type: " + infoToAdd.cuisines.join(', ');
     cardContent.appendChild(reviewContainer);
     cardContent.appendChild(priceRange);
+	cardContent.appendChild(hoursOfOperation);
     cardContent.appendChild(cuisineType);
     restarauntContent.appendChild(cardContent);
 
@@ -111,18 +114,18 @@ var createSearchResultElement = function (infoToAdd) {
     var footer = document.createElement("footer");
         footer.classList = "card-footer";
     var phoneNumber = document.createElement("p");
-        phoneNumber.textContent = "(123) 456-7890";
+        phoneNumber.textContent = infoToAdd.restaurant_phone;
     var website = document.createElement("a");
         website.classList = "fa-solid fa-globe fa-2x";
-        website.setAttribute("href", "#");
+        website.setAttribute("href", infoToAdd.restaurant_website);
         website.setAttribute("target", "_blank");
-    var socialMedia = document.createElement("a");
-        socialMedia.classList = "fa-brands fa-facebook fa-2x";
-        socialMedia.setAttribute("href", "#");
-        socialMedia.setAttribute("target", "_blank");
+    var address = document.createElement("p");
+		address.textContent = infoToAdd.address.formatted;
     footer.appendChild(phoneNumber);
-    footer.appendChild(website);
-    footer.appendChild(socialMedia);
+	if (infoToAdd.restaurant_website != "") {
+		footer.appendChild(website);
+	}
+    footer.appendChild(address);
 
     // append image, header, and main content to card div
     restarauntCard.appendChild(restarauntImage);
