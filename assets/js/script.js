@@ -4,6 +4,7 @@ var buttonHandler = function (e) {
     // form submit button is pressed
     if (e.target.id === "submit-form") {
         var foodToFind = getSearchStatus();
+        searchResults(foodToFind);
         createSearchResultsEl();
         console.log(foodToFind);
     } else
@@ -31,7 +32,7 @@ var getSearchStatus = function () {
 
     return searchConditions;
 }
-var searchResults = function (){
+var searchResults = function (searchCondition){
 
     var APIURL = "https://api.documenu.com/v2/restaurants/state/NY?key=8497dbd8ca25fc1d31b026b9c7854ef8";
     var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
@@ -42,8 +43,8 @@ var searchResults = function (){
                 if (data.length > 0) {
                     var lat = data[0].lat;
                     var lon = data[0].lon;
-                    console.log(lat, lon);
-                    var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&distance=25&key=8497dbd8ca25fc1d31b026b9c7854ef8";
+                    console.log(lat, lon, searchCondition.typeOfFood.join("&"));
+                    var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=25&key=8497dbd8ca25fc1d31b026b9c7854ef8";
                     fetch(APIURL).then(function(response) {
                         if (response.ok) {
                             response.json().then(function(data){
