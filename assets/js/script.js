@@ -4,6 +4,7 @@ var buttonHandler = function (e) {
     // form submit button is pressed
     if (e.target.id === "submit-form") {
         var foodToFind = getSearchStatus();
+        createSearchResultsEl();
         console.log(foodToFind);
     } else
     // delete food type that was selected from appearing in results
@@ -40,6 +41,8 @@ foodAddedEl.addEventListener("click", function(e) {
     e.preventDefault();
     buttonHandler(e);
 });
+
+// ** icon clicking for addind restarunt to favorite is handled in restarauntCardDisplay.js ** //
 
 // populate the list of food that can be filtered by user
 // contained in foodFilterHandler.js
