@@ -76,9 +76,10 @@ var createSearchResultElement = function (infoToAdd) {
         cardContent.textContent = "Here's information about the restaraunt";
         // create review stars
     var reviewContainer = document.createElement("div");
-        reviewContainer.textContent = "Number of stars: ";
-    var stars = 3;
-    var halfStar = true;
+        reviewContainer.textContent = "Out of 146 reviews: ";
+    var stars = 4;
+    var halfStar = (stars % 1 !== 0) ? true : false;
+    if (halfStar) stars -= stars%1;
     for (var i = 0; i < stars; i++) {
         var star = document.createElement("i");
             star.classList = "fa-solid fa-star";
@@ -89,8 +90,9 @@ var createSearchResultElement = function (infoToAdd) {
             var star = document.createElement("i");
                 star.classList = "fa-solid fa-star-half-stroke";
             reviewContainer.appendChild(star);
+            stars++;
         }
-        for (var i = 0; i < (4-stars); i++) {
+        for (var i = 0; i < (5-stars); i++) {
             var star = document.createElement("i");
                 star.classList = "fa-regular fa-star";
             reviewContainer.appendChild(star);
@@ -113,9 +115,11 @@ var createSearchResultElement = function (infoToAdd) {
     var website = document.createElement("a");
         website.classList = "fa-solid fa-globe fa-2x";
         website.setAttribute("href", "#");
+        website.setAttribute("target", "_blank");
     var socialMedia = document.createElement("a");
         socialMedia.classList = "fa-brands fa-facebook fa-2x";
         socialMedia.setAttribute("href", "#");
+        socialMedia.setAttribute("target", "_blank");
     footer.appendChild(phoneNumber);
     footer.appendChild(website);
     footer.appendChild(socialMedia);
@@ -139,5 +143,8 @@ var createSearchResults = function (restarauntToAdd) {
     searchResultsContainer.classList = "columns is-multiline";
     document.getElementById("search-results").appendChild(searchResultsContainer);
     // create the results
-    createSearchResultElement(restarauntToAdd);
+    var numOfResultsToDisplay = prompt("How many results do you want? (debugging only)");
+    for (var i = 0; i < numOfResultsToDisplay; i++) {
+        createSearchResultElement(restarauntToAdd);
+    }
 }
