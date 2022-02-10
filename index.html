@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <title>Eat Around The World</title>
     <link
       rel="stylesheet"
@@ -107,13 +108,15 @@
           >Specify food you'd like to search for:</label>
         <input list="cuisine-types" id="food-input" oninput="selectFood()" />
         <datalist id="cuisine-types"></datalist>
-        <div class="is-flex" id="food-added"></div>
+        <div id="food-added">
+          <div class="is-flex" id="food-added-container"></div>
+        </div>
 
         <button id="submit-form" style="margin-top: 20px">Submit</button>
       </form>
     </div>
 
-    <div class="columns is-multiline" id="search-results"></div>
+    <div id="search-results"></div>
 
     <script src="./assets/js/foodFilterHandler.js"></script>
     <script src="./assets/js/restarauntCardDisplay.js"></script>

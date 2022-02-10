@@ -26,11 +26,11 @@ var favoriteRestarauntHandler = function () {
     }
 };
 
-var createSearchResultsEl = function () {
-    var resultsAreaEl = document.getElementById('search-results');
+var createSearchResultElement = function (infoToAdd) {
+    var resultsAreaEl = document.getElementById('search-results-container');
     // main card
     var restarauntCard = document.createElement("div");
-    restarauntCard.classList = "card column is-5-tablet is-3-desktop is-3-widescreen is-2-fullhd";
+    restarauntCard.classList = "card column is-5-tablet is-4-desktop is-3-widescreen is-one-fifth-fullhd";
 
     // card image at the top
     var restarauntImage = document.createElement("div");
@@ -63,7 +63,7 @@ var createSearchResultsEl = function () {
         mediaContent.classList = "media-content icon is-medium";
     var mediaContentTitle = document.createElement("p");
         mediaContentTitle.classList = "title is-10"
-        mediaContentTitle.textContent = "Restaraunt Name";
+        mediaContentTitle.textContent = infoToAdd.restaurant_name;
     favoriteRestarauntContainer.appendChild(favoriteRestaraunt);
     mediaContent.appendChild(mediaContentTitle);
     media.appendChild(favoriteRestarauntContainer);
@@ -73,12 +73,13 @@ var createSearchResultsEl = function () {
     // main card content under header
     var cardContent = document.createElement("div");
         cardContent.className = "content";
-        cardContent.textContent = "Here's information about the restaraunt";
+        // cardContent.textContent = "";
         // create review stars
     var reviewContainer = document.createElement("div");
-        reviewContainer.textContent = "Number of stars: ";
-    var stars = 3;
-    var halfStar = true;
+        reviewContainer.textContent = "Reviews: ";
+    var stars = 4;
+    var halfStar = (stars % 1 !== 0) ? true : false;
+    if (halfStar) stars -= stars%1;
     for (var i = 0; i < stars; i++) {
         var star = document.createElement("i");
             star.classList = "fa-solid fa-star";
@@ -89,19 +90,23 @@ var createSearchResultsEl = function () {
             var star = document.createElement("i");
                 star.classList = "fa-solid fa-star-half-stroke";
             reviewContainer.appendChild(star);
+            stars++;
         }
-        for (var i = 0; i < (4-stars); i++) {
+        for (var i = 0; i < (5-stars); i++) {
             var star = document.createElement("i");
                 star.classList = "fa-regular fa-star";
             reviewContainer.appendChild(star);
         }
     }
-    var hoursOfOperation = document.createElement("div");
-        hoursOfOperation.textContent = "Hours: 12PM - 10PM M-F";
+	var hoursOfOperation = document.createElement("div");
+		hoursOfOperation.textContent = "Hours of Operation: " + infoToAdd.hours;
+    var priceRange = document.createElement("div");
+        priceRange.textContent = "Price range: " + infoToAdd.price_range;
     var cuisineType = document.createElement("div");
-        cuisineType.textContent = "Cuisine type: American, comfort";
+        cuisineType.textContent = "Cuisine type: " + infoToAdd.cuisines.join(', ');
     cardContent.appendChild(reviewContainer);
-    cardContent.appendChild(hoursOfOperation);
+    cardContent.appendChild(priceRange);
+	cardContent.appendChild(hoursOfOperation);
     cardContent.appendChild(cuisineType);
     restarauntContent.appendChild(cardContent);
 
@@ -109,16 +114,18 @@ var createSearchResultsEl = function () {
     var footer = document.createElement("footer");
         footer.classList = "card-footer";
     var phoneNumber = document.createElement("p");
-        phoneNumber.textContent = "(123) 456-7890";
+        phoneNumber.textContent = infoToAdd.restaurant_phone;
     var website = document.createElement("a");
         website.classList = "fa-solid fa-globe fa-2x";
-        website.setAttribute("href", "#");
-    var socialMedia = document.createElement("a");
-        socialMedia.classList = "fa-brands fa-facebook fa-2x";
-        socialMedia.setAttribute("href", "#");
+        website.setAttribute("href", infoToAdd.restaurant_website);
+        website.setAttribute("target", "_blank");
+    var address = document.createElement("p");
+		address.textContent = infoToAdd.address.formatted;
     footer.appendChild(phoneNumber);
-    footer.appendChild(website);
-    footer.appendChild(socialMedia);
+	if (infoToAdd.restaurant_website != "") {
+		footer.appendChild(website);
+	}
+    footer.appendChild(address);
 
     // append image, header, and main content to card div
     restarauntCard.appendChild(restarauntImage);
@@ -126,4 +133,21 @@ var createSearchResultsEl = function () {
     restarauntCard.appendChild(footer);
     resultsAreaEl.appendChild(restarauntCard);
 
+}
+
+var createSearchResults = function (restarauntToAdd) {
+    // if there is already search results, remove them
+    if (document.getElementById('search-results-container')) {
+        document.getElementById('search-results-container').remove();
+    }
+    // create new container to house new search results
+    var searchResultsContainer = document.createElement("div");
+    searchResultsContainer.id = "search-results-container";
+    searchResultsContainer.classList = "columns is-multiline";
+    document.getElementById("search-results").appendChild(searchResultsContainer);
+    // create the results
+    var numOfResultsToDisplay = prompt("How many results do you want? (debugging only)");
+    for (var i = 0; i < numOfResultsToDisplay; i++) {
+        createSearchResultElement(restarauntToAdd);
+    }
 }
