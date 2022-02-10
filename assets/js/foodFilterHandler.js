@@ -1,4 +1,4 @@
-var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Mediteranian', 'Asian', 'German', 'Comfort'];
+var listOfFoodOptions = ['Thai', 'Italian', 'French', 'American', 'Mediteranian', 'Asian', 'German', 'British', 'Scottish', 'Indian', 'Chinese', 'Spanish', 'Swedish', 'Cuban', 'Columbian', 'Brazilian', 'Japanese', 'Jewish', 'Russian', 'Polish', 'Canadian', 'Peruvian', 'Irish', 'Greek', 'Egyptian', 'Haitian', 'Canadian', 'Cajun', 'Korean', 'Nigerian', 'Libyan', 'Algerian'];
 var foodOptionsSelected = [];
 
 var deleteFoodType = function (typeToRemove) {  
