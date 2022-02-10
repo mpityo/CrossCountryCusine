@@ -62,7 +62,7 @@ to a pointer to indicate that it can be clicked */
 
 .content figure {
     margin: 0.5rem;
-} */ */
+} */
 
 
 /* Top Image Styling */
@@ -72,31 +72,29 @@ to a pointer to indicate that it can be clicked */
     margin-right: auto;
     width: 50%;
 } */
+
+.favorite-button:hover {
+    cursor: pointer;
+}
+
+.card {
+    margin-top: 10px;
+}
+
+.card-footer {
+    justify-content: space-around;
+    align-items: center;
+}
+
+#search-results {
+    margin: 15px;
+    justify-content: space-evenly;
+}
  
 .center, .center-cilumn, .top, .right, .bottom, .left {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* 
- * food filter buttons for user 
- * added to show a mock up
- * DELETE and add bulma classes instead
- */
-.food-added-container {
-    margin-top: 20px;
-}
-.food-added-span {
-    border: 1px black solid;
-    border-radius: 10px;
-    background-color: rgba(98, 102, 104, 0.2);
-    padding: 2px 5px;
-}
-.food-added-button {
-    background-color: rgba(0, 0, 0, 0);
-    border: 0;
-    cursor: pointer;
 }
 
 .center-column {
