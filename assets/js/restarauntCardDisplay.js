@@ -146,8 +146,8 @@ var createSearchResults = function (restarauntToAdd) {
     searchResultsContainer.classList = "columns is-multiline";
     document.getElementById("search-results").appendChild(searchResultsContainer);
     // create the results
-    var numOfResultsToDisplay = prompt("How many results do you want? (debugging only)");
-    for (var i = 0; i < numOfResultsToDisplay; i++) {
-        createSearchResultElement(restarauntToAdd);
-    }
+    restarauntToAdd.forEach (function(element, index) {
+        //console.log(restarauntToAdd[index]);
+        createSearchResultElement(restarauntToAdd[index]);
+    });
 }

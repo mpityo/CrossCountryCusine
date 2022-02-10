@@ -3,13 +3,9 @@ var formEl = document.querySelector("#form");
 var buttonHandler = function (e) {
     // form submit button is pressed
     if (e.target.id === "submit-form") {
-        var foodToFind = getSearchStatus();
-
-        var results = serachResults(foodToFind);
-		var trimmedResults = results.data;
+        var results = ['john'];
+        searchResults(getSearchStatus());
         resetSearchResults();
-		trimmedResults.forEach (function(index)) {
-        	createSearchResults(trimmedResults[index]);
     } else
     // delete food type that was selected from appearing in results
     if (e.target.name === "delete-food-type") {
@@ -36,8 +32,6 @@ var getSearchStatus = function () {
     return searchConditions;
 }
 var searchResults = function (searchCondition){
-
-    var APIURL = "https://api.documenu.com/v2/restaurants/state/NY?key=8497dbd8ca25fc1d31b026b9c7854ef8";
     var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
     var latLonUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchCondition.city + '&appid=' + appid;
     fetch(latLonUrl).then(function(response) {
@@ -47,20 +41,26 @@ var searchResults = function (searchCondition){
                     var lat = data[0].lat;
                     var lon = data[0].lon;
                     console.log(lat, lon, searchCondition.typeOfFood.join("&"));
-                    var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=25&key=8497dbd8ca25fc1d31b026b9c7854ef8";
+                    var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=10&key=0cebd14c16be99f05592ec0bb0fc639f";
                     fetch(APIURL).then(function(response) {
                         if (response.ok) {
-                            response.json().then(function(data){
-                            
-                                console.log(data)
+                            response.json().then(function(obj){
+
+                                    createSearchResults(obj.data);
                     
-                            })
+                            });
                     
-                        };
+                        } else {
+                            console.log(response);
+                        }
                     });
                     
+                } else {
+                    console.log("No city found " + data);
                 }
             });
+        } else {
+            console.log("No response from openweather " + response);
         }
     });
     };
