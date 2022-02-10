@@ -21,12 +21,12 @@ var getSearchStatus = function () {
     }
     var searchConditions = {
         city: document.querySelector("#city-search").value,
-        dollarAmount: {
-            oneDollar: document.querySelector("input[name='one-dollar']").checked,
-            twoDollar: document.querySelector("input[name='two-dollar']").checked,
-            threeDollar: document.querySelector("input[name='three-dollar']").checked,
-            fourDollar: document.querySelector("input[name='four-dollar']").checked
-        },
+        dollarAmount: [
+            document.querySelector("input[name='one-dollar']").checked ? "$" : "",
+            document.querySelector("input[name='two-dollar']").checked ? "$$" : "",
+            document.querySelector("input[name='three-dollar']").checked ? "$$$" : "",
+            document.querySelector("input[name='four-dollar']").checked ? "$$$$" : ""
+        ],
         typeOfFood: foodOptionsSelected
     }
 
