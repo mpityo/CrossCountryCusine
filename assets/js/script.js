@@ -30,7 +30,36 @@ var getSearchStatus = function () {
 
     return searchConditions;
 }
+var searchResults = function (){
 
+    var APIURL = "https://api.documenu.com/v2/restaurants/state/NY?key=8497dbd8ca25fc1d31b026b9c7854ef8";
+    var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
+    var latLonUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchCondition.city + '&appid=' + appid;
+    fetch(latLonUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                if (data.length > 0) {
+                    var lat = data[0].lat;
+                    var lon = data[0].lon;
+                    console.log(lat, lon);
+                    var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&distance=25&key=8497dbd8ca25fc1d31b026b9c7854ef8";
+                    fetch(APIURL).then(function(response) {
+                        if (response.ok) {
+                            response.json().then(function(data){
+                            
+                                console.log(data)
+                    
+                            })
+                    
+                        };
+                    });
+                    
+                }
+            });
+        }
+    });
+    };
+    
 // handle actions from various buttons that are clicked
 formEl.querySelector("button").addEventListener("click", function(e) {  
     e.preventDefault();
