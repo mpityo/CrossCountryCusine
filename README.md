@@ -1,98 +1,36 @@
-# EatAroundTheWorld
-***
+# Cross Country Cuisine
 
-* Group 10 Project 1
+Find great restaurants all across the county with this interactive restuarant search engine. Sort results by location, type of food, and cost. Searches are easily entered via the user interface, and results are displayed with pictures and relevant nforamtion for each restuarant. Users can store search data and favorite results to create a running list of restaurant experiences. 
+<br><br>
+Feel free to refresh the page and come back whenever you need to check your search results, they'll stick around until you change or remove them.
+<br>
+## :memo: Features
+ - Searchable interace that accepts location, cuisine and price filters
+ - Easy to use and maintain and easy to pick up
+ - Lightweight and fast - no bulky code or unnecessary additions here!
+ - Uses javascript, BULMA, css and html
+## :construction: List of TO-DO's for furture release/colaboration
+This, in its current state is a MVP. A list of potential features is listed below.
+ - Add settings to page to provide photos specific to the search result
+ - Expand avaialable search filters
+ - Incorporate reviews and local area map
+ - Add links to activites in the local area upon returning search results 
+## :key: How to access
+The code base can be cloned from the GitHub repo [here](https://github.com/dai2119555/eataroundtheworld.git).
+<br>
+The website may be viewed on GitPages [here](https://mpityo.github.io/Daily-Planner/)
+<br>
+## :trophy: Credit
+Full Javascript and functionality by Matt and Aaron
+BULMA and css by Kevin and Dailen
+<br>
 
-## Description
-***
-
-* User Story
-
-
-***
-
-* Project should fulfill the following requirements:
-
-Use a CSS framework other than Bootstrap.
-
-Be deployed to GitHub Pages.
-
-Be interactive (i.e., accept and respond to user input).
-
-Use at least two server-side APIs.
-
-Does not use alerts, confirms, or prompts (use modals).
-
-Use client-side storage to store persistent data.
-
-Be responsive.
-
-Have a polished UI.
-
-Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
-
-Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
-
-## Mock-Up
-***
+<br>
+<br>
+Project is fully open source: explore the code and upgrade away!
+<br>
+<br>
+![Picture of website hero](./images/CIbi-del-mondo-2.jpg "Main page")
+GitHubGitHub
 
 
-## Table of Contents (Optional)
-***
-
--[Installation](#installation)
--[Usage](#usage)
--[Credits](#credits)
--[License](#license)
-
-## Installation
-*** 
-
-1. Create a new repository on github (main) and clone it (local) into own computer. 
-
-2. Create a brand new project without starter-code.
-
-3. Search for two different APIs.  
-
-4. 
-
-5. 
-
-6. 
- 
-## Usage 
- 
-1. Load project page through this link <>
-  
-2. 
-  
-3. 
-
-4. 
-
-5. 
-
-## Credits
-
-* Team members:
-
-Aaron
-
-Alex
-
-Dalien
-
-Matt
-
-Vulong
- 
-* Tools:
- 
-https://lucid.app/documents#/dashboard
-
-
- 
-## License
-
-N/A
