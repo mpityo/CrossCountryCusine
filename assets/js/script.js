@@ -1,4 +1,10 @@
 var formEl = document.querySelector("#form");
+favoriteRestaurants = [
+    {
+        city: "",
+        restaurants: []
+    }
+];
 
 var buttonHandler = function (e) {
     // form submit button is pressed
@@ -12,6 +18,25 @@ var buttonHandler = function (e) {
         // contained in foodFilterHandler.js
         deleteFoodType(e);
     }
+}
+
+var saveToFavorites = function (cityName, restaurantInfo) { 
+    var saved = false;
+    favoriteRestaurants.forEach(function (element, index) {  
+        if (element.city === cityName) {
+            element.restaurants.push(restaurantInfo);
+            saved = true;
+        }
+    });
+    if (!saved) {
+        if (favoriteRestaurants) {
+            favoriteRestaurants.city = cityName;
+            favoriteRestaurants.restaurants = restaurantInfo;
+        } else {
+            favoriteRestaurants.push({city: cityName, restaurants: restaurantInfo});
+        }
+    }
+    localStorage.setItem("favorite-restaurants", favoriteRestaurants);
 }
 
 var getSearchStatus = function () {

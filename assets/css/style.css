@@ -73,6 +73,10 @@ to a pointer to indicate that it can be clicked */
     width: 50%;
 } */
 
+.hero {
+    background-color: rgba(20, 20, 116, 0.219);
+}
+
 .favorite-button:hover {
     cursor: pointer;
 }
