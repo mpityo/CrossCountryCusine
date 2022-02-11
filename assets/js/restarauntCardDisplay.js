@@ -41,7 +41,7 @@ var createSearchResultElement = function (infoToAdd, index) {
     var imgFigure = document.createElement("figure");
         imgFigure.classList = "image";
     var imageSrc = document.createElement("img");
-        imageSrc.setAttribute('src', './././images/food-guidelines-1.jpg');
+        imageSrc.setAttribute('src', './././images/card_title.jpg');
     imgFigure.appendChild(imageSrc);
     restarauntImage.appendChild(imgFigure);
 
