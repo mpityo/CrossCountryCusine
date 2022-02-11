@@ -30,7 +30,7 @@ BULMA and css by Kevin and Dailen
 Project is fully open source: explore the code and upgrade away!
 <br>
 <br>
-![Picture of website hero](./images/CIbi-del-mondo-2.jpg "Main page")
-GitHubGitHub
+
+![Picture of website hero](/images/CIbi-del-mondo-2.jpg "Main page")
 
 
