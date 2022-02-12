@@ -1,5 +1,5 @@
 var formEl = document.querySelector("#form");
-favoriteRestaurants = [
+var favoriteRestaurants = [
     {
         city: "",
         restaurants: []
@@ -9,7 +9,6 @@ favoriteRestaurants = [
 var buttonHandler = function (e) {
     // form submit button is pressed
     if (e.target.id === "submit-form") {
-        var results = ['john'];
         searchResults(getSearchStatus());
         resetSearchResults();
     } else
@@ -20,23 +19,58 @@ var buttonHandler = function (e) {
     }
 }
 
+var getFavoriteIconStatus = function (favorite) {
+    if (favorite == "true") {
+        return "favorite-button fa-solid fa-star fa-2x";
+    } else {
+        return "favorite-button fa-regular fa-star fa-2x";
+    }
+}
+
 var saveToFavorites = function (cityName, restaurantInfo) { 
     var saved = false;
+    console.log(cityName, restaurantInfo);
+    if (!favoriteRestaurants) {
+        favoriteRestaurants = [
+            {
+                city: cityName,
+                restaurants: [restaurantInfo]
+            }
+        ];
+        console.log("saved info to whole array ", favoriteRestaurants);
+    } else {
     favoriteRestaurants.forEach(function (element, index) {  
-        if (element.city === cityName) {
+        if (element.city.toLowerCase() === cityName.toLowerCase()) {
             element.restaurants.push(restaurantInfo);
+            console.log("saved " + restaurantInfo + " to " + cityName);
             saved = true;
         }
     });
     if (!saved) {
-        if (favoriteRestaurants) {
-            favoriteRestaurants.city = cityName;
-            favoriteRestaurants.restaurants = restaurantInfo;
-        } else {
-            favoriteRestaurants.push({city: cityName, restaurants: restaurantInfo});
+            favoriteRestaurants.push({city: cityName, restaurants: [restaurantInfo]});
+            console.log("saved info to end of array ", favoriteRestaurants, {city: cityName, restaurants: restaurantInfo});
         }
     }
-    localStorage.setItem("favorite-restaurants", favoriteRestaurants);
+    localStorage.setItem("favorite-restaurants", JSON.stringify(favoriteRestaurants));
+}
+
+var loadFavoritesFromLocal = function () {
+    var storage = localStorage.getItem("favorite-restaurants");
+    favoriteRestaurants = JSON.parse(storage);
+    createSearchResults("default", favoriteRestaurants);
+}
+
+var removeFromSaved = function (restaurantInfo) {
+    for (var i = 0; i < favoriteRestaurants.length; i ++) {
+        if (favoriteRestaurants[i].city.toLowerCase() === restaurantInfo.address.city.toLowerCase()) {
+            for (var a = 0; a < favoriteRestaurants[i].restaurants.length; a++) {
+                if (favoriteRestaurants[i].restaurants[a].restaurant_name == restaurantInfo.restaurant_name) {
+                    favoriteRestaurants[i].restaurants.splice(a, 1);
+                }
+            }
+        }
+    }
+    localStorage.setItem("favorite-restaurants", JSON.stringify(favoriteRestaurants));
 }
 
 var getSearchStatus = function () {
@@ -57,38 +91,41 @@ var getSearchStatus = function () {
     return searchConditions;
 }
 var searchResults = function (searchCondition){
-    var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
-    var latLonUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchCondition.city + '&appid=' + appid;
-    fetch(latLonUrl).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                if (data.length > 0) {
-                    var lat = data[0].lat;
-                    var lon = data[0].lon;
-                    console.log(lat, lon, searchCondition.typeOfFood.join("&"));
-                    var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=10&key=0cebd14c16be99f05592ec0bb0fc639f";
-                    fetch(APIURL).then(function(response) {
-                        if (response.ok) {
-                            response.json().then(function(obj){
-
-                                    createSearchResults(obj.data);
-                    
-                            });
-                    
-                        } else {
-                            console.log(response);
-                        }
-                    });
-                    
-                } else {
-                    console.log("No city found " + data);
-                }
-            });
-        } else {
-            console.log("No response from openweather " + response);
-        }
-    });
-    };
+    //if (!localStorage.getItem("restaurantData")) {
+        var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
+        var latLonUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchCondition.city + '&appid=' + appid;
+        fetch(latLonUrl).then(function(response) {
+            if (response.ok) {
+                response.json().then(function(data) {
+                    if (data.length > 0) {
+                        var lat = data[0].lat;
+                        var lon = data[0].lon;
+                        console.log(lat, lon, searchCondition.typeOfFood.join("&"));
+                        var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=10&key=0cebd14c16be99f05592ec0bb0fc639f";
+                        fetch(APIURL).then(function(response) {
+                            if (response.ok) {
+                                response.json().then(function(obj){
+                                    localStorage.setItem("restaurantData", JSON.stringify(obj.data));
+                                    console.log("api called");
+                                    createSearchResults(obj.data, favoriteRestaurants);
+                                });
+                            } else {
+                                console.log(response);
+                            }
+                        });
+                    } else {
+                        console.log("No city found " + data);
+                    }
+                });
+            } else {
+                console.log("No response from openweather " + response);
+            }
+        });
+    // } else {
+    //     console.log("loaded from storage");
+    //     createSearchResults(JSON.parse(localStorage.getItem("restaurantData")), favoriteRestaurants);
+    // }
+};
     
 var resetSearchResults = function () {
     // reset the form and food options user selected
@@ -121,10 +158,12 @@ document.querySelector("#food-added-container").addEventListener("click", functi
     buttonHandler(e);
 });
 
-// ** icon clicking for addind restarunt to favorite is handled in restarauntCardDisplay.js ** //
+// ** icon clicking for addind restarunt to favorite is handled in restaurantCardDisplay.js ** //
 
 // populate the list of food that can be filtered by user
 // contained in foodFilterHandler.js
 listOfFoodOptions.forEach(element => {
     createFoodTypeOptions(element);
 });
+
+loadFavoritesFromLocal();

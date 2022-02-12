@@ -16,9 +16,9 @@ This, in its current state is a MVP. A list of potential features is listed belo
  - Incorporate reviews and local area map
  - Add links to activites in the local area upon returning search results 
 ## :key: How to access
-The code base can be cloned from the GitHub repo [here](https://github.com/dai2119555/eataroundtheworld.git).
+The code base can be cloned from the GitHub repo [here](https://github.com/dai2119555/CrossCountryCusine).
 <br>
-The website may be viewed on GitPages [here](https://mpityo.github.io/Daily-Planner/)
+The website may be viewed on GitPages [here](https://dai2119555.github.io/CrossCountryCusine/)
 <br>
 ## :trophy: Credit
 Full Javascript and functionality by Matt and Aaron
@@ -31,6 +31,5 @@ Project is fully open source: explore the code and upgrade away!
 <br>
 <br>
 
-![Picture of website hero](/images/CIbi-del-mondo-2.jpg "Main page")
-
+![Picture of website hero](/images/final_website_image.png "Main page")
 

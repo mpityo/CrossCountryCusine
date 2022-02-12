@@ -128,42 +128,43 @@
 
     <div>
       <!-- SEARCH FORM -->
-      <form action="" id="form">
+      <form action="" id="form" style="padding: 50px 100px;">
         <!-- city input -->
-        <label for="city-search">Enter a city name:</label>
-        <input
+        <label class="label" for="city-search">Enter a city name:</label>
+        <input class="input"
           type="text"
           name="city-search"
           id="city-search"
           placeholder="City Name"
+          style="width: 275px;"
         />
         <!-- dollar input -->
-        <p>Specify a dollar amount to show:</p>
-        <input type="checkbox" name="one-dollar" id="1-dollar" />
-        <label for="one-dollar"><heavy>$</heavy></label>
-        <input type="checkbox" name="two-dollar" id="2-dollar" />
-        <label for="two-dollar"><heavy>$$</heavy></label>
-        <input type="checkbox" name="three-dollar" id="3-dollar" />
-        <label for="three-dollar"><heavy>$$$</heavy></label>
-        <input type="checkbox" name="four-dollar" id="4-dollar" />
-        <label for="four-dollar"><heavy>$$$$</heavy></label>
+        <p class="label">Specify a dollar amount to show:</p>
+        <input class="checkbox" type="checkbox" name="one-dollar" id="1-dollar" />
+        <label class="checkbox" for="one-dollar"><heavy>$</heavy></label>
+        <input class="checkbox" type="checkbox" name="two-dollar" id="2-dollar" />
+        <label class="checkbox" for="two-dollar"><heavy>$$</heavy></label>
+        <input class="checkbox" type="checkbox" name="three-dollar" id="3-dollar" />
+        <label class="checkbox" for="three-dollar"><heavy>$$$</heavy></label>
+        <input class="checkbox" type="checkbox" name="four-dollar" id="4-dollar" />
+        <label class="checkbox" for="four-dollar"><heavy>$$$$</heavy></label>
         <!-- food type filter -->
-        <label for="cuisine-types" style="display: block; margin-top: 1rem"
+        <label class="label" for="cuisine-types" style="display: block; margin-top: 1rem"
           >Specify food you'd like to search for:</label>
         <input list="cuisine-types" id="food-input" oninput="selectFood()" />
-        <datalist id="cuisine-types"></datalist>
+        <datalist class="select" id="cuisine-types"></datalist>
         <div id="food-added">
           <div class="is-flex" id="food-added-container"></div>
         </div>
 
-        <button id="submit-form" style="margin-top: 20px">Submit</button>
+        <button class="button is-link" id="submit-form" style="margin-top: 20px">Submit</button>
       </form>
     </div>
 
     <div id="search-results"></div>
 
     <script src="./assets/js/foodFilterHandler.js"></script>
-    <script src="./assets/js/restarauntCardDisplay.js"></script>
+    <script src="./assets/js/restaurantCardDisplay.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

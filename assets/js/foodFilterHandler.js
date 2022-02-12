@@ -38,7 +38,8 @@ var createFoodUserButtons = function (foodName) {
     var foodAddedEl = document.querySelector("#food-added-container");
     
     var foodAddedContainer = document.createElement("div");
-    foodAddedContainer.classList = "individual-food-container";
+    foodAddedContainer.classList = "button is-info individual-food-container";
+    foodAddedContainer.setAttribute("style", "margin-left: 10px;");
 
     var foodToAddEl = document.createElement("span");
     foodToAddEl.textContent = foodName;
