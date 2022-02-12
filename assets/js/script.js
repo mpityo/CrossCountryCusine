@@ -87,7 +87,7 @@ var getSearchStatus = function () {
     return searchConditions;
 }
 var searchResults = function (searchCondition){
-   if (!localStorage.getItem("restaurantData")) {
+   //if (!localStorage.getItem("restaurantData")) {
         var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
         var latLonUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchCondition.city + '&appid=' + appid;
         fetch(latLonUrl).then(function(response) {
@@ -96,7 +96,7 @@ var searchResults = function (searchCondition){
                     if (data.length > 0) {
                         var lat = data[0].lat;
                         var lon = data[0].lon;
-                        var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=10&key=0cebd14c16be99f05592ec0bb0fc639f";
+                        var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=10&key=6562a61d18895d80e93deeb71f6f82f2";
                         fetch(APIURL).then(function(response) {
                             if (response.ok) {
                                 response.json().then(function(obj){
@@ -115,10 +115,10 @@ var searchResults = function (searchCondition){
 				openModal("Could not load results for finding city due to a server issue");
             }
         });
-    } else {
-		openModal("Loaded from local storage");
-         createSearchResults(JSON.parse(localStorage.getItem("restaurantData")), favoriteRestaurants);
-    }
+    // } else {
+	// 	openModal("Loaded from local storage");
+    //     createSearchResults(JSON.parse(localStorage.getItem("restaurantData")), favoriteRestaurants);
+    // }
 };
     
 var resetSearchResults = function () {
@@ -143,12 +143,12 @@ var resetSearchResults = function () {
 }
 
 var openModal = function (text) {
-	var modal = document.querySelector('body .model');
+	var modal = document.querySelector('.modal');
 	modal.querySelector(".modal-card-title").textContent = text;
 	modal.classList.add("is-active");
 }
 var closeModal = function () {
-	var modal = document.querySelector('.model');
+	var modal = document.querySelector('.modal');
 	modal.classList.remove("is-active");
 }
 var closeAllModals = function () {
@@ -172,7 +172,6 @@ document.querySelector("#food-added-container").addEventListener("click", functi
 	var tar = close.closest('.model');
 	
 	close.addEventListener('click', () => {
-		console.log(close, tar);
 		closeModal();
 	});
 });

@@ -40,7 +40,7 @@ var createSearchResultElement = function (infoToAdd, index, favorite) {
     var imgFigure = document.createElement("figure");
         imgFigure.classList = "image";
     var imageSrc = document.createElement("img");
-        imageSrc.setAttribute('src', './././images/card_title.jpg');
+        imageSrc.setAttribute('src', '././assets/images/card_title.jpg');
     imgFigure.appendChild(imageSrc);
     restaurantImage.appendChild(imgFigure);
 
