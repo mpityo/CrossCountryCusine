@@ -10,91 +10,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <!-- <link rel="stylesheet" href="styles/debug.css"> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <style>
-      /* .hero {
-        background: black url(images/CIbi-del-mondo-2.jpg) center / cover;
-      }
-
-      @media (max-width: 1024px) {
-        .hero {
-          background: black url(images/CIbi-del-mondo-2.jpg) center / cover;
-        }
-      }
-      @media (max-width: 726px) {
-        .hero {
-          background: black url(images/CIbi-del-mondo-2.jpg) center / cover;
-        }
-      } */
-    </style>
   </head>
 
   <body>
     <!-- .hero -->
-    <section class="hero is-full-height">
-      <!-- .hero-head -->
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
-            <img src="images\EYWATY-Blog-World.jpg">
-          </a>
-      
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">
-              Home
-            </a>
-      
-            <a class="navbar-item">
-                Worldwide
-            </a>
-      
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                More
-              </a>
-      
-              <div class="navbar-dropdown">
-                <a class="navbar-item">
-                    Great Directions
-                </a>
-                <a class="navbar-item">
-                    Best Menus 
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-</div> 
+    <section class="hero is-full-height">	
       <!-- /.hero-head -->
 
       <!-- .hero-body -->
@@ -107,61 +28,67 @@
         <!-- </div> -->
       </header>
       <!-- /.hero-body -->
-
-      <!-- .hero-foot -->
-      <!-- <div class="hero-foot center" style="padding: 2rem">
-        <div id="grid" style="width: 768px">
-          <div id="a" class="center-column">
-            <p class="has-text-centered has-text-black">Worldwide</p>
-          </div>
-          <div id="b" class="center-column">
-            <p class="has-text-centered has-text-black">Great Directions</p>
-          </div>
-          <div id="c" class="center-column" style="border-left: 1px solid gray">
-            <p class="has-text-centered has-text-black">Best Menus</p>
-          </div>
-        </div>
-      </div> -->
-      <!-- /.hero-foot -->
     </section>
     <!-- /.hero -->
 
-    <div>
       <!-- SEARCH FORM -->
-      <form action="" id="form" style="padding: 50px 100px;">
+      <form class="is-flex is-align-items-center is-flex-direction-column" action="" id="form">
         <!-- city input -->
         <label class="label" for="city-search">Enter a city name:</label>
         <input class="input"
           type="text"
           name="city-search"
           id="city-search"
-          placeholder="City Name"
+          placeholder="New York City"
           style="width: 275px;"
         />
         <!-- dollar input -->
-        <p class="label">Specify a dollar amount to show:</p>
-        <input class="checkbox" type="checkbox" name="one-dollar" id="1-dollar" />
-        <label class="checkbox" for="one-dollar"><heavy>$</heavy></label>
-        <input class="checkbox" type="checkbox" name="two-dollar" id="2-dollar" />
-        <label class="checkbox" for="two-dollar"><heavy>$$</heavy></label>
-        <input class="checkbox" type="checkbox" name="three-dollar" id="3-dollar" />
-        <label class="checkbox" for="three-dollar"><heavy>$$$</heavy></label>
-        <input class="checkbox" type="checkbox" name="four-dollar" id="4-dollar" />
-        <label class="checkbox" for="four-dollar"><heavy>$$$$</heavy></label>
+        <p class="label pt-2">Specify a dollar amount to show:</p>
+		<div class="checkbox-wrapper">
+        <label class="checkbox" for="one-dollar">
+			<input class="checkbox" type="checkbox" name="one-dollar" id="1-dollar" />
+			$
+		</label>
+        <label class="checkbox" for="two-dollar">
+	        <input class="checkbox" type="checkbox" name="two-dollar" id="2-dollar" />
+        	$$
+        </label>
+		<label class="checkbox" for="three-dollar">
+	        <input class="checkbox" type="checkbox" name="three-dollar" id="3-dollar" />
+        	$$$
+        </label>
+		<label class="checkbox" for="four-dollar">
+	        <input class="checkbox" type="checkbox" name="four-dollar" id="4-dollar" />
+        	$$$$
+        </label>
+	</div>
         <!-- food type filter -->
-        <label class="label" for="cuisine-types" style="display: block; margin-top: 1rem"
-          >Specify food you'd like to search for:</label>
+        <label class="label pt-2" for="cuisine-types" style="display: block; margin-top: 1rem"
+          >Specify food you would like to limit results to:</label>
         <input list="cuisine-types" id="food-input" oninput="selectFood()" />
         <datalist class="select" id="cuisine-types"></datalist>
-        <div id="food-added">
-          <div class="is-flex" id="food-added-container"></div>
+        <div id="food-added" class="is-flex is-flex-wrap-wrap is-align-items-center">
+          <div class="" id="food-added-container"></div>
         </div>
 
-        <button class="button is-link" id="submit-form" style="margin-top: 20px">Submit</button>
+        <button class="button is-link" id="submit-form" style="margin-top: 10px;">Submit</button>
       </form>
     </div>
 
     <div id="search-results"></div>
+	
+	<div class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<section class="modal-card-body">
+				<p class="modal-card-title">The city name entered was not found</p>
+				<p class="modal-card-body">Try again!</p>
+			</section>
+			<footer class="modal-card-foot">
+				<button class="button is-info" aria-label="close">Okay</button>
+			</footer>
+		</div>
+	</div>
 
     <script src="./assets/js/foodFilterHandler.js"></script>
     <script src="./assets/js/restaurantCardDisplay.js"></script>

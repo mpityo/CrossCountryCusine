@@ -20,11 +20,9 @@ var favoriterestaurantHandler = function (city) {
     if (event.type === "click") {
         if (restaurant.getAttribute('favorite') === 'true') {
             restaurant.setAttribute('favorite', false);
-            console.log(JSON.parse(restaurant.getAttribute('info')));
             removeFromSaved(JSON.parse(restaurant.getAttribute('info')));
         } else {
             restaurant.setAttribute('favorite', true);
-            console.log(restaurant.getAttribute('city'), restaurantData[restaurant.getAttribute('index')]);
             saveToFavorites(restaurant.getAttribute('city'), restaurantData[restaurant.getAttribute('index')]);
         }
     }
@@ -106,10 +104,13 @@ var createSearchResultElement = function (infoToAdd, index, favorite) {
         }
     }
 	var hoursOfOperation = document.createElement("div");
+	if (infoToAdd.hours)
 		hoursOfOperation.textContent = "Hours of Operation: " + infoToAdd.hours;
     var priceRange = document.createElement("div");
+	if (infoToAdd.price_range)
         priceRange.textContent = "Price range: " + infoToAdd.price_range;
     var cuisineType = document.createElement("div");
+	if (infoToAdd.cuisines != "")
         cuisineType.textContent = "Cuisine type: " + infoToAdd.cuisines.join(', ');
     cardContent.appendChild(reviewContainer);
     cardContent.appendChild(priceRange);
@@ -123,15 +124,15 @@ var createSearchResultElement = function (infoToAdd, index, favorite) {
     var phoneNumber = document.createElement("p");
         phoneNumber.textContent = infoToAdd.restaurant_phone;
     var website = document.createElement("a");
-        website.classList = "fa-solid fa-globe fa-2x";
+	if (infoToAdd.restaurant_website != "") {
+        website.classList = "fa-solid fa-globe fa-2x mr-2";
         website.setAttribute("href", infoToAdd.restaurant_website);
         website.setAttribute("target", "_blank");
+	}
     var address = document.createElement("p");
 		address.textContent = infoToAdd.address.formatted;
     footer.appendChild(phoneNumber);
-	if (infoToAdd.restaurant_website != "") {
-		footer.appendChild(website);
-	}
+	footer.appendChild(website);
     footer.appendChild(address);
 
     // append image, header, and main content to card div
@@ -169,7 +170,6 @@ var createSearchResults = function (restaurantToAdd, localStorageArray) {
                 createSearchResultElement(currentLocalRestaurant, index, "true");
                 for (var i = 0; i < restaurantToAdd.length; i++) {
                     if (restaurantToAdd[i].restaurant_name === currentLocalRestaurant.restaurant_name) {
-                        console.log("removed " + restaurantToAdd[i] + " cause it matched " + currentLocalRestaurant);
                         restaurantToAdd.splice(i, 1);
                         i = restaurantToAdd.length;
                     }
@@ -181,25 +181,7 @@ var createSearchResults = function (restaurantToAdd, localStorageArray) {
 }
     if (restaurantToAdd != "default") {
     restaurantToAdd.forEach (function(element, index) {
-    //     var cityName = element.address.city.toLowerCase();
-    //     var wasAdded = false;
-    //     if (localStorageArray) {
-    //     // go into local storage and find city that's being search
-    //     for (var i = 0; i < localStorageArray.length; i++) {
-    //         if (localStorageArray[i].city.toLowerCase() === cityName) {
-    //             localStorageArray[i].restaurants.forEach(function(localElement, localIndex) {
-    //                 if (element === localElement) {
-    //                     wasAdded = true;
-    //                     i = localStorageArray.length;
-    //                     return;
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
-    //     if (!wasAdded) {
-            createSearchResultElement(element, index, "false");
-        // }
+    	createSearchResultElement(element, index, "false");
     });
 }
 }

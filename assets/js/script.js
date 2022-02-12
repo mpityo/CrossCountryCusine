@@ -29,7 +29,6 @@ var getFavoriteIconStatus = function (favorite) {
 
 var saveToFavorites = function (cityName, restaurantInfo) { 
     var saved = false;
-    console.log(cityName, restaurantInfo);
     if (!favoriteRestaurants) {
         favoriteRestaurants = [
             {
@@ -37,18 +36,15 @@ var saveToFavorites = function (cityName, restaurantInfo) {
                 restaurants: [restaurantInfo]
             }
         ];
-        console.log("saved info to whole array ", favoriteRestaurants);
     } else {
     favoriteRestaurants.forEach(function (element, index) {  
         if (element.city.toLowerCase() === cityName.toLowerCase()) {
             element.restaurants.push(restaurantInfo);
-            console.log("saved " + restaurantInfo + " to " + cityName);
             saved = true;
         }
     });
     if (!saved) {
             favoriteRestaurants.push({city: cityName, restaurants: [restaurantInfo]});
-            console.log("saved info to end of array ", favoriteRestaurants, {city: cityName, restaurants: restaurantInfo});
         }
     }
     localStorage.setItem("favorite-restaurants", JSON.stringify(favoriteRestaurants));
@@ -91,7 +87,7 @@ var getSearchStatus = function () {
     return searchConditions;
 }
 var searchResults = function (searchCondition){
-    //if (!localStorage.getItem("restaurantData")) {
+   if (!localStorage.getItem("restaurantData")) {
         var appid = "c66c7201cb23e0dca6ae60ccc9c0c236";
         var latLonUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchCondition.city + '&appid=' + appid;
         fetch(latLonUrl).then(function(response) {
@@ -100,31 +96,29 @@ var searchResults = function (searchCondition){
                     if (data.length > 0) {
                         var lat = data[0].lat;
                         var lon = data[0].lon;
-                        console.log(lat, lon, searchCondition.typeOfFood.join("&"));
                         var APIURL = "https://api.documenu.com/v2/restaurants/search/geo?lat=" + lat + "&lon=" + lon + "&cuisine=" + searchCondition.typeOfFood.join("&") + "&distance=10&key=0cebd14c16be99f05592ec0bb0fc639f";
                         fetch(APIURL).then(function(response) {
                             if (response.ok) {
                                 response.json().then(function(obj){
                                     localStorage.setItem("restaurantData", JSON.stringify(obj.data));
-                                    console.log("api called");
                                     createSearchResults(obj.data, favoriteRestaurants);
                                 });
                             } else {
-                                console.log(response);
+                                openModal("Could not load results from the server");
                             }
                         });
                     } else {
-                        console.log("No city found " + data);
+                        openModal("" + searchCondition.city + " did not produce any results based on criteria searched for");
                     }
                 });
             } else {
-                console.log("No response from openweather " + response);
+				openModal("Could not load results for finding city due to a server issue");
             }
         });
-    // } else {
-    //     console.log("loaded from storage");
-    //     createSearchResults(JSON.parse(localStorage.getItem("restaurantData")), favoriteRestaurants);
-    // }
+    } else {
+		openModal("Loaded from local storage");
+         createSearchResults(JSON.parse(localStorage.getItem("restaurantData")), favoriteRestaurants);
+    }
 };
     
 var resetSearchResults = function () {
@@ -148,6 +142,21 @@ var resetSearchResults = function () {
     });
 }
 
+var openModal = function (text) {
+	var modal = document.querySelector('body .model');
+	modal.querySelector(".modal-card-title").textContent = text;
+	modal.classList.add("is-active");
+}
+var closeModal = function () {
+	var modal = document.querySelector('.model');
+	modal.classList.remove("is-active");
+}
+var closeAllModals = function () {
+	(document.querySelectorAll(".model") || []).forEach((modal) => {
+		closeModal(modal);
+	});
+}
+
 // handle actions from various buttons that are clicked
 formEl.querySelector("button").addEventListener("click", function(e) {  
     e.preventDefault();
@@ -158,7 +167,26 @@ document.querySelector("#food-added-container").addEventListener("click", functi
     buttonHandler(e);
 });
 
-// ** icon clicking for addind restarunt to favorite is handled in restaurantCardDisplay.js ** //
+// listen for modal action to close
+(document.querySelectorAll(".modal-background, .modal-card-foot .button") || []).forEach((close) => {
+	var tar = close.closest('.model');
+	
+	close.addEventListener('click', () => {
+		console.log(close, tar);
+		closeModal();
+	});
+});
+
+document.addEventListener('keydown', (event) => {
+	var e = event || window.event;
+	
+	// escape key is pressed
+	if (e.keyCode === 27) {
+		closeAllModals();
+	}
+});
+
+// ** icon clicking for adding restarunt to favorite is handled in restaurantCardDisplay.js ** //
 
 // populate the list of food that can be filtered by user
 // contained in foodFilterHandler.js
