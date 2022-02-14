@@ -26,9 +26,12 @@ This, in its current state is a MVP. A list of potential features is listed belo
  - Limit each type of cuisine (if multiple are selected), so user sees a good combo, instead of predominately one
  
 ## :key: How to access
-The code base can be cloned from the GitHub repo [here](https://github.com/dai2119555/CrossCountryCusine).
+The code base can be cloned from the group GitHub repo [here](https://github.com/dai2119555/CrossCountryCusine).
 <br>
-The website may be viewed on GitPages [here](https://dai2119555.github.io/CrossCountryCusine/)
+It may also be cloned from my forked repo [here](https://github.com/mpityo/CrossCountryCusine).
+<br>
+<br>
+The website may be viewed on GitPages [here](https://mpityo.github.io/CrossCountryCusine/)
 <br>
 ## :trophy: Credit
 Full Javascript and functionality by Matt and Aaron
