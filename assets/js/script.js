@@ -102,17 +102,21 @@ var searchResults = function (searchCondition){
                                 response.json().then(function(obj){
                                     localStorage.setItem("restaurantData", JSON.stringify(obj.data));
                                     createSearchResults(obj.data, favoriteRestaurants);
+                                    return true;
                                 });
                             } else {
                                 openModal("Could not load results from the server");
+                                return false;
                             }
                         });
                     } else {
                         openModal("" + searchCondition.city + " did not produce any results based on criteria searched for");
+                        return false;
                     }
                 });
             } else {
 				openModal("Could not load results for finding city due to a server issue");
+                return false;
             }
         });
     // } else {
