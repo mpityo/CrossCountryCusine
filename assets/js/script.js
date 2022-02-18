@@ -105,17 +105,17 @@ var searchResults = function (searchCondition){
                                     return true;
                                 });
                             } else {
-                                //openModal("Could not load results from the server");
+                                openModal("Could not load results from the server");
                                 return false;
                             }
                         });
                     } else {
-                        //openModal("" + searchCondition.city + " did not produce any results based on criteria searched for");
+                        openModal("" + searchCondition.city + " did not produce any results based on criteria searched for");
                         return false;
                     }
                 });
             } else {
-				//openModal("No city results were found, check your search criteria");
+				openModal("No city results were found, check your search criteria");
                 return false;
             }
         });
@@ -146,36 +146,20 @@ var resetSearchResults = function () {
     });
 }
 
-// var openModal = function (text) {
-// 	var modal = document.querySelector('.modal');
-// 	modal.querySelector(".modal-card-title").textContent = text;
-// 	modal.classList.add("is-active");
-// }
-// var closeModal = function () {
-// 	var modal = document.querySelector('.modal');
-// 	modal.classList.remove("is-active");
-// }
-// var closeAllModals = function () {
-// 	(document.querySelectorAll(".model") || []).forEach((modal) => {
-// 		closeModal(modal);
-// 	});
-// }
-// // listen for modal action to close
-// (document.querySelectorAll(".modal-background, .modal-card-foot .button") || []).forEach((close) => {
-// 	var tar = close.closest('.model');
-	
-// 	close.addEventListener('click', () => {
-// 		closeModal();
-// 	});
-// });
-// document.addEventListener('keydown', (event) => {
-// 	var e = event || window.event;
-	
-// 	// escape key is pressed
-// 	if (e.keyCode === 27) {
-// 		closeAllModals();
-// 	}
-// });
+var openModal = function (text) {
+	var modal = document.querySelector('.modal');
+	modal.querySelector(".modal-card-title").textContent = text;
+	modal.classList.add("is-active");
+}
+var closeModal = function () {
+	var modal = document.querySelector('.modal');
+	modal.classList.remove("is-active");
+}
+var closeAllModals = function () {
+	(document.querySelectorAll(".model") || []).forEach((modal) => {
+		closeModal(modal);
+	});
+}
 
 // handle actions from various buttons that are clicked
 formEl.querySelector("button").addEventListener("click", function(e) {  
@@ -185,6 +169,24 @@ formEl.querySelector("button").addEventListener("click", function(e) {
 document.querySelector("#food-added-container").addEventListener("click", function(e) {
     e.preventDefault();
     buttonHandler(e);
+});
+
+// listen for modal action to close
+(document.querySelectorAll(".modal-background, .modal-card-foot .button") || []).forEach((close) => {
+	var tar = close.closest('.model');
+	
+	close.addEventListener('click', () => {
+		closeModal();
+	});
+});
+
+document.addEventListener('keydown', (event) => {
+	var e = event || window.event;
+	
+	// escape key is pressed
+	if (e.keyCode === 27) {
+		closeAllModals();
+	}
 });
 
 // ** icon clicking for adding restarunt to favorite is handled in restaurantCardDisplay.js ** //
